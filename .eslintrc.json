@@ -1,0 +1,27 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": "airbnb-base",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "resolves": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        }
+    },
+    "rules": {
+        "no-console": "off",
+        "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
+        "no-unused-vars": "warn",
+        "object-curly-newline": "off",
+        "max-len": ["error", { "code": 150, "tabWidth": 4 }],
+        // "no-param-reassign": ["error", { "ignoreParamsNamed": ["state"], "props": false }]
+        "no-param-reassign": 0
+    }
+}

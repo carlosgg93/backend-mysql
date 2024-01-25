@@ -207,6 +207,18 @@ CREATE TABLE IF NOT EXISTS welcomePack (
     PRIMARY KEY (id)
 );
 
+CREATE TABLE IF NOT EXISTS circuit (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    description VARCHAR(100) NOT NULL,
+    phone VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    web VARCHAR(100) NOT NULL,
+    instagram VARCHAR(100) NOT NULL,
+    facebook VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id)
+);
+
 CREATE TABLE IF NOT EXISTS tournaments (
     id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(100) NOT NULL,
@@ -233,7 +245,7 @@ CREATE TABLE IF NOT EXISTS categories (
     PRIMARY KEY (id)
 );
 
-/*create relation m-n table tournament with caterogories*/
+/*create relation m-n table tournaments with caterogories*/
 CREATE TABLE IF NOT EXISTS tournaments_categories (
     id INT NOT NULL AUTO_INCREMENT,
     tournament_id INT NOT NULL,
@@ -280,24 +292,12 @@ CREATE TABLE IF NOT EXISTS managers (
     FOREIGN KEY (id_club) REFERENCES club(id)
 );
 
-/*create relation m-n table tournament with player*/
+/*create relation m-n table tournaments with players*/
 CREATE TABLE IF NOT EXISTS tournament_player (
     id INT NOT NULL AUTO_INCREMENT,
     tournament_id INT NOT NULL,
     player_id INT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (tournament_id) REFERENCES tournament(id),
-    FOREIGN KEY (player_id) REFERENCES player(id)
-);
-
-CREATE TABLE IF NOT EXISTS circuit (
-    id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    description VARCHAR(100) NOT NULL,
-    phone VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    web VARCHAR(100) NOT NULL,
-    instagram VARCHAR(100) NOT NULL,
-    facebook VARCHAR(100) NOT NULL,
-    PRIMARY KEY (id)
+    FOREIGN KEY (tournament_id) REFERENCES tournaments(id),
+    FOREIGN KEY (player_id) REFERENCES players(id)
 );

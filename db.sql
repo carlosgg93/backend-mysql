@@ -142,6 +142,71 @@ CREATE DATABASE padelhub;
 
 USE padelhub;
 
+CREATE TABLE IF NOT EXISTS country (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS comunity (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    id_country INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_country) REFERENCES country(id)
+);
+
+CREATE TABLE IF NOT EXISTS province (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    id_comunity INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_comunity) REFERENCES comunity(id)
+);
+
+CREATE TABLE IF NOT EXISTS city (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    id_province INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_province) REFERENCES province(id)
+);
+
+CREATE TABLE IF NOT EXISTS genre (
+    id INT NOT NULL AUTO_INCREMENT,
+    type VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS club (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(100) NOT NULL,
+    direction VARCHAR(100) NOT NULL,
+    type VARCHAR(100) NOT NULL,
+    logo VARCHAR(100) NOT NULL,
+    number_of_courts INT NOT NULL,
+    web VARCHAR(100) NOT NULL,
+    services VARCHAR(100) NOT NULL,
+    schedules VARCHAR(100) NOT NULL,
+    instagram VARCHAR(100) NOT NULL,
+    facebook VARCHAR(100) NOT NULL,
+    is_premium BOOLEAN NOT NULL,
+    id_city INT NOT NULL,
+    id_comunity INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_city) REFERENCES city(id),
+    FOREIGN KEY (id_comunity) REFERENCES comunity(id)
+);
+
+CREATE TABLE IF NOT EXISTS welcomePack (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    description VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id)
+);
+
 CREATE TABLE IF NOT EXISTS tournaments (
     id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(100) NOT NULL,
@@ -151,11 +216,15 @@ CREATE TABLE IF NOT EXISTS tournaments (
     is_premium BOOLEAN NOT NULL,
     image VARCHAR(100) NOT NULL,
     price INT NOT NULL,
-    id_circuit FOREIGN KEY REFERENCES circuit(id),
-    id_city FOREIGN KEY REFERENCES city(id),
-    id_club FOREIGN KEY REFERENCES club(id),
-    id_welcomePack FOREIGN KEY REFERENCES welcomePack(id),
-    PRIMARY KEY (id)
+    id_circuit INT NOT NULL,
+    id_city INT NOT NULL,
+    id_club INT NOT NULL,
+    id_welcomePack INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_circuit) REFERENCES circuit(id),
+    FOREIGN KEY (id_city) REFERENCES city(id),
+    FOREIGN KEY (id_club) REFERENCES club(id),
+    FOREIGN KEY (id_welcomePack) REFERENCES welcomePack(id)
 );
 
 CREATE TABLE IF NOT EXISTS categories (
@@ -185,24 +254,30 @@ CREATE TABLE IF NOT EXISTS users (
     password VARCHAR(100) NOT NULL,
     phone VARCHAR(100) NOT NULL,
     image VARCHAR(100) NOT NULL,
-    id_genre FOREIGN KEY REFERENCES genre(id),
-    id_country FOREIGN KEY REFERENCES country(id),
-    id_city FOREIGN KEY REFERENCES city(id),
-    PRIMARY KEY (id)
+    id_genre INT NOT NULL,
+    id_country INT NOT NULL,
+    id_city INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_genre) REFERENCES genre(id),
+    FOREIGN KEY (id_country) REFERENCES country(id),
+    FOREIGN KEY (id_city) REFERENCES city(id)
 );
 
 CREATE TABLE IF NOT EXISTS players (
     id INT NOT NULL AUTO_INCREMENT,
-    id_user FOREIGN KEY REFERENCES users(id),
+    id_user INT NOT NULL,
     position VARCHAR(100) NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_user) REFERENCES users(id)
 );
 
 CREATE TABLE IF NOT EXISTS managers (
     id INT NOT NULL AUTO_INCREMENT,
-    id_user FOREIGN KEY REFERENCES users(id),
-    id_club FOREIGN KEY REFERENCES club(id),
-    PRIMARY KEY (id)
+    id_user INT NOT NULL,
+    id_club INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_user) REFERENCES users(id),
+    FOREIGN KEY (id_club) REFERENCES club(id)
 );
 
 /*create relation m-n table tournament with player*/
@@ -224,65 +299,5 @@ CREATE TABLE IF NOT EXISTS circuit (
     web VARCHAR(100) NOT NULL,
     instagram VARCHAR(100) NOT NULL,
     facebook VARCHAR(100) NOT NULL,
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE IF NOT EXISTS city (
-    id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    id_province FOREIGN KEY REFERENCES province(id),
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE IF NOT EXISTS province (
-    id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    id_comunity FOREIGN KEY REFERENCES comunity(id),
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE IF NOT EXISTS comunity (
-    id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    id_country FOREIGN KEY REFERENCES country(id),
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE IF NOT EXISTS country (
-    id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE IF NOT EXISTS genre (
-    id INT NOT NULL AUTO_INCREMENT,
-    type VARCHAR(100) NOT NULL,
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE IF NOT EXISTS club (
-    id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    phone VARCHAR(100) NOT NULL,
-    direction VARCHAR(100) NOT NULL,
-    type VARCHAR(100) NOT NULL,
-    logo VARCHAR(100) NOT NULL,
-    number_of_courts INT NOT NULL,
-    web VARCHAR(100) NOT NULL,
-    services VARCHAR(100) NOT NULL,
-    schedules VARCHAR(100) NOT NULL,
-    instagram VARCHAR(100) NOT NULL,
-    facebook VARCHAR(100) NOT NULL,
-    is_premium BOOLEAN NOT NULL,
-    id_city FOREIGN KEY REFERENCES city(id),
-    id_comunity FOREIGN KEY REFERENCES comunity(id),
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE IF NOT EXISTS welcomePack (
-    id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    description VARCHAR(100) NOT NULL,
     PRIMARY KEY (id)
 );

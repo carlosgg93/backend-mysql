@@ -3,7 +3,7 @@ import cors from 'cors';
 import { info } from './utils/logger.js';
 import { PORT } from './utils/config.js';
 import loginRouter from './controllers/loginController.js';
-import moviesRouter from './controllers/moviesController.js';
+import tournamentsRouter from './controllers/tournamentsController.js';
 
 const app = express();
 
@@ -13,7 +13,7 @@ app.use(express.json());
 
 // Route handlers
 app.use('/api/login', loginRouter);
-app.use('/api/movies', moviesRouter);
+app.use('/api/tournaments', tournamentsRouter);
 
 const server = app.listen(PORT, () => {
   info('Server listening on port', PORT);

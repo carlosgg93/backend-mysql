@@ -26,7 +26,7 @@ black
 
 /*Create new database padelhub with hist tables, inserts and his relations:
 
-TOURNAMENT
+TOURNAMENTS
 - id
 - title
 - description
@@ -44,12 +44,12 @@ CATEGORIES
 - id
 - name (1a, 2a, 3a, 4a etc..)
 
-TOURNAMENT-CATEGORIES
+TOURNAMENTS-CATEGORIES
 - id
 - tournament_id
 - categories_id
 
-USER
+USERS
 - id
 - name
 - surname
@@ -64,22 +64,22 @@ USER
 - id_country
 - id_city
 
-PLAYER
+PLAYERS
 - id
 - id_user
 - position
 
-MANAGER
+MANAGERS
 - id
 - id_user
 - id_club
 
-TOURNAMENT-PLAYER
+TOURNAMENTS-PLAYERS
 - id
 - tournament_id
 - player_id
 
-CIRCUIT
+CIRCUITS
 - id
 - name
 - description

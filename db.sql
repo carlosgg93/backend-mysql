@@ -276,6 +276,7 @@ CREATE TABLE IF NOT EXISTS players (
     position VARCHAR(100) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (id_user) REFERENCES users(id)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS managers (
@@ -285,6 +286,7 @@ CREATE TABLE IF NOT EXISTS managers (
     PRIMARY KEY (id),
     FOREIGN KEY (id_user) REFERENCES users(id),
     FOREIGN KEY (id_club) REFERENCES club(id)
+    ON DELETE CASCADE
 );
 
 /*create relation m-n table tournaments with players*/
@@ -367,12 +369,12 @@ INSERT INTO province (name, id_comunity) VALUES ('Alicante', 17);
 INSERT INTO province (name, id_comunity) VALUES ('Castellon', 17);
 INSERT INTO province (name, id_comunity) VALUES ('Valencia', 17);
 
-INSERT INTO city (name, id_province) VALUES ('LHospitalet de Llobregat', 9);
-INSERT INTO city (name, id_province) VALUES ('Cornella de Llobregat', 9);
-INSERT INTO city (name, id_province) VALUES ('Esplugues de Llobregat', 9);
-INSERT INTO city (name, id_province) VALUES ('Sant Feliu de Llobregat', 9);
-INSERT INTO city (name, id_province) VALUES ('Sant Joan Despi', 9);
-INSERT INTO city (name, id_province) VALUES ('Barcelona', 9);
+INSERT INTO city (name, id_province) VALUES ('LHospitalet de Llobregat', 22);
+INSERT INTO city (name, id_province) VALUES ('Cornella de Llobregat', 22);
+INSERT INTO city (name, id_province) VALUES ('Esplugues de Llobregat', 22);
+INSERT INTO city (name, id_province) VALUES ('Sant Feliu de Llobregat', 22);
+INSERT INTO city (name, id_province) VALUES ('Sant Joan Despi', 22);
+INSERT INTO city (name, id_province) VALUES ('Barcelona', 22);
 
 INSERT INTO genre (type) VALUES ('Masculino');
 INSERT INTO genre (type) VALUES ('Femenino');

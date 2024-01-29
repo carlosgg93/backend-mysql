@@ -1,0 +1,8 @@
+POST http://localhost:3001/api/tournaments
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImNhcmxvc2dnOTMiLCJpZCI6IjY1NGEzZmFlNWJjZjBhNWIwOWQzMDExZiIsImlhdCI6MTcwMDAzMTQ4Nn0.MUb-KumH0DWp3lSOxc3VX6Wgg3HZSCNMPItodEOkC2Q
+
+{
+  "title": "Creando nota con autorización",
+  "content": "Creando nota con autorización"
+}

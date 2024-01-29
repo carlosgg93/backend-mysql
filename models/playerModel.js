@@ -60,9 +60,4 @@ export class PlayerModel {
     const [rows] = await connection.query('SELECT * FROM players WHERE id_tournament = ?', [id]);
     return rows;
   }
-
-  // static async getPlayersByMatch(id) {
-  //   const [rows] = await connection.query('SELECT * FROM players WHERE id_match = ?', [id]);
-  //   return rows;
-  // }
 }

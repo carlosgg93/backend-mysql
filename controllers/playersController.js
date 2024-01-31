@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { PlayerModel } from '../models/playerModel.js';
 import { getAuth } from '../middlewares/getAuth.js';
+import bcrypt from 'bcrypt';
 
 const playersRouter = Router();
 
@@ -22,9 +23,33 @@ playersRouter.delete('/:id', getAuth, async (req, res, next) => {
 });
 
 playersRouter.post('/', getAuth, async (req, res, next) => {
-  const player = req.body;
-  await PlayerModel.addPlayer(player);
-  res.status(201).end();
+  const { body } = req;
+  const { name, surname, age, date_of_birth, email, password, phone, image, position, id_genre, id_city } = body;
+
+  if (!name || !surname || !age || !date_of_birth || !email || !password || !phone || !image || !id_genre || !id_city || !position) {
+    return res.status(400).json({
+      error: 'content missing',
+    });
+  }
+
+  const passwordHash = bcrypt.hashSync(password, 10);
+
+  const player = {
+    name,
+    surname,
+    age,
+    date_of_birth,
+    email,
+    passwordHash,
+    phone,
+    image,
+    position,
+    id_genre,
+    id_city,
+  };
+
+  const insertedId = PlayerModel.addPlayer(player);
+  res.status(201).json(insertedId);
 });
 
 playersRouter.put('/:id', getAuth, async (req, res, next) => {

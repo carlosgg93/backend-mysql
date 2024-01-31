@@ -1,27 +1,25 @@
-// const bcrypt = require('bcrypt')
-// const User = require('../models/userModel.js')
-// const jwt = require('jsonwebtoken')
-
 import { Router } from 'express';
 import bcrypt from 'bcrypt';
-import UserModel from '../models/userModel.js';
+import ManagerModel from '../models/managerModel.js';
+import jwt from 'jsonwebtoken';
+import { JWT_SECRET } from '../utils/config.js';
 
 const loginRouter = Router();
 
 loginRouter.post('/', async (req, res) => {
   const { body } = req;
-  const { username, password } = body;
+  const { email, password } = body;
 
-  const user = await UserModel.getUserByUserName(username);
-  const passwordCorrect = user === null ? false : await bcrypt.compare(password, user.password);
+  const manager = await ManagerModel.getManagerByEmail(email);
+  const passwordCorrect = manager === null ? false : await bcrypt.compare(password, manager.password);
 
-  if (!(user && passwordCorrect)) {
+  if (!(manager && passwordCorrect)) {
     return res.status(401).json({
       error: 'invalid username or password',
     });
   }
 
-  jwt.sign({ username, id: user._id }, process.env.SECRET, (err, token) => {
+  jwt.sign({ email, id: manager.id }, JWT_SECRET, (err, token) => {
     if (err) {
       return res.status(500).json({
         error: 'error signing token',
@@ -29,10 +27,9 @@ loginRouter.post('/', async (req, res) => {
     }
     return res.status(200).json({
       token,
-      username: user.username,
-      name: user.name,
-      email: user.email,
-      id: user._id,
+      id: manager.id,
+      name: manager.name,
+      email: manager.email,
     });
   });
 });

@@ -7,6 +7,7 @@ import tournamentsRouter from './controllers/tournamentsController.js';
 import clubsRouter from './controllers/clubsController.js';
 import circuitsRouter from './controllers/circuitsController.js';
 import playersRouter from './controllers/playersController.js';
+import managersRouter from './controllers/managersController.js';
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use('/api/tournaments', tournamentsRouter);
 app.use('/api/clubs', clubsRouter);
 app.use('/api/circuits', circuitsRouter);
 app.use('/api/players', playersRouter);
+app.use('/api/managers', managersRouter);
 
 const server = app.listen(PORT, () => {
   info('Server listening on port', PORT);

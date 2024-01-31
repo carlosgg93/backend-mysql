@@ -1,0 +1,16 @@
+POST http://localhost:3000/api/managers
+Content-Type: application/json
+
+{
+    "name": "Carlos",
+    "surname": "Garcia Garcia",
+    "age": 30,
+    "date_of_birth": "1993-04-19",
+    "email": "cgarciagarcia1993@gmail.com",
+    "password": "123456",
+    "phone": "655425862",
+    "image": "https://www.clubpadelbarcelona.com/wp-content/uploads/2019/10/club-padel-barcelona-club-padel-la-salut-1.jpg",
+    "id_genre": 1,
+    "id_city": 1,
+    "id_club": 1
+}

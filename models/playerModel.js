@@ -3,7 +3,7 @@ import connection from '../db.js';
 export class PlayerModel {
   static async getAllPlayers() {
     const [rows] = await connection.query(
-      'SELECT u.name, u.surname, p.position, u.age, u.date_of_birth, u.email, u.password, u.phone,' +
+      'SELECT p.id, u.name, u.surname, p.position, u.age, u.date_of_birth, u.email, u.password, u.phone,' +
         ' u.image, g.type as genre, c.name as city, pr.name as province, com.name as comunity, count.name as country FROM users AS u JOIN players ' +
         'AS p ON u.id = p.id_user JOIN genre AS g ON u.id_genre = g.id JOIN city AS c ON u.id_city = c.id JOIN province AS pr ON c.id_province = pr.id ' +
         'JOIN comunity AS com ON pr.id_comunity = com.id JOIN country AS count ON com.id_country = count.id',
@@ -13,7 +13,7 @@ export class PlayerModel {
 
   static async getPlayerById(id) {
     const [rows] = await connection.query(
-      'SELECT u.name, u.surname, p.position, u.age, u.date_of_birth, u.email, u.password, u.phone,' +
+      'SELECT p.id, u.name, u.surname, p.position, u.age, u.date_of_birth, u.email, u.password, u.phone,' +
         ' u.image, g.type as genre, c.name as city, pr.name as province, com.name as comunity, count.name as country FROM users AS u JOIN players ' +
         'AS p ON u.id = p.id_user JOIN genre AS g ON u.id_genre = g.id JOIN city AS c ON u.id_city = c.id JOIN province AS pr ON c.id_province = pr.id ' +
         'JOIN comunity AS com ON pr.id_comunity = com.id JOIN country AS count ON com.id_country = count.id AND p.id = ?',

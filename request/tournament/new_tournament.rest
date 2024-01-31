@@ -1,8 +1,19 @@
-POST http://localhost:3001/api/tournaments
+POST http://localhost:3000/api/tournaments
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImNhcmxvc2dnOTMiLCJpZCI6IjY1NGEzZmFlNWJjZjBhNWIwOWQzMDExZiIsImlhdCI6MTcwMDAzMTQ4Nn0.MUb-KumH0DWp3lSOxc3VX6Wgg3HZSCNMPItodEOkC2Q
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNnYXJjaWFnYXJjaWExOTkzQGdtYWlsLmNvbSIsImlkIjoxLCJpYXQiOjE3MDY3MDEzNzl9.wPNJwCoVYkGN8YHpVNnbuI0ql69Wl6ILGZEBaSgrQH0
 
 {
-  "title": "Creando nota con autorización",
-  "content": "Creando nota con autorización"
+  "title": "Publidep",
+  "description": "Torneo de Publidep",
+  "initial_date": "2021-09-01",
+  "final_date": "2021-09-30",
+  "is_premium": false,
+  "image": "https://www.publidep.com/wp-content/uploads/2020/10/logo-publidep.png",
+  "price": 0,
+  "id_circuit": 1,
+  "id_city": 1,
+  "id_club": 1,
+  "id_welcome_pack": 1
 }
+
+

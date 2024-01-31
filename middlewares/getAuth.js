@@ -15,9 +15,9 @@ export const getAuth = (request, response, next) => {
     return response.status(401).json({ error: 'token missing or invalid' });
   }
 
-  const { id: userId } = decodedToken;
+  const { id: id } = decodedToken;
 
-  request.userId = userId;
+  request.id = id;
 
   next();
 };

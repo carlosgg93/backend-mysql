@@ -22,7 +22,7 @@ managersRouter.delete('/:id', getAuth, async (req, res, next) => {
   res.status(204).end();
 });
 
-managersRouter.post('/', getAuth, async (req, res, next) => {
+managersRouter.post('/', async (req, res, next) => {
   const { body } = req;
   const { name, surname, age, date_of_birth, email, password, phone, image, id_genre, id_city, id_club } = body;
 
@@ -48,7 +48,7 @@ managersRouter.post('/', getAuth, async (req, res, next) => {
     id_club,
   };
 
-  const insertedId = ManagerModel.addPlayer(manager);
+  const insertedId = await ManagerModel.addManager(manager);
   res.status(201).json(insertedId);
 });
 

@@ -33,9 +33,13 @@ export default class ManagerModel {
     return rows[0];
   }
 
-  static async deleteManagerById(id) {
+  static async deleteManagerById(id_manager) {
+    const [rows] = await connection.query('SELECT id_user FROM managers WHERE id = ?', [id_manager]);
+    const id_user = rows[0].id_user;
+
     //delete manager from managers table and user from users table with the same id on cascade
-    const [rows] = await connection.query('DELETE FROM managers WHERE id = ?', [id]);
+    await connection.query('DELETE FROM users WHERE id = ?', [id_user]);
+    await connection.query('DELETE FROM managers WHERE id = ?', [id_manager]);
     return rows;
   }
 
@@ -49,7 +53,7 @@ export default class ManagerModel {
         manager.age,
         manager.date_of_birth,
         manager.email,
-        manager.password,
+        manager.passwordHash,
         manager.phone,
         manager.image,
         manager.id_genre,

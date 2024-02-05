@@ -248,9 +248,8 @@ CREATE TABLE IF NOT EXISTS tournaments_categories (
     tournament_id INT NOT NULL,
     categories_id INT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (tournament_id) REFERENCES tournaments(id),
-    FOREIGN KEY (categories_id) REFERENCES categories(id),
-    ON DELETE CASCADE
+    FOREIGN KEY (tournament_id) REFERENCES tournaments(id) ON DELETE CASCADE,
+    FOREIGN KEY (categories_id) REFERENCES categories(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS users (
@@ -275,8 +274,7 @@ CREATE TABLE IF NOT EXISTS players (
     id_user INT NOT NULL,
     position VARCHAR(100) NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (id_user) REFERENCES users(id),
-    ON DELETE CASCADE
+    FOREIGN KEY (id_user) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS managers (
@@ -284,9 +282,9 @@ CREATE TABLE IF NOT EXISTS managers (
     id_user INT NOT NULL,
     id_club INT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (id_user) REFERENCES users(id),
-    FOREIGN KEY (id_club) REFERENCES club(id),
-    ON DELETE CASCADE
+    FOREIGN KEY (id_user) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_club) REFERENCES club(id) ON DELETE CASCADE
+    
 );
 
 /*create relation m-n table tournaments with players*/

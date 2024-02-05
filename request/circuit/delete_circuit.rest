@@ -1,2 +1,2 @@
-DELETE http://localhost:3000/api/tournaments/6
+DELETE http://localhost:3000/api/circuits/4
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNnYXJjaWFnYXJjaWExOTkzQGdtYWlsLmNvbSIsImlkIjoxLCJpYXQiOjE3MDY3MDEzNzl9.wPNJwCoVYkGN8YHpVNnbuI0ql69Wl6ILGZEBaSgrQH0

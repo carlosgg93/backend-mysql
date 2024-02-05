@@ -18,7 +18,7 @@ export class TournamentModel {
 
   static async addTournament(tournament) {
     const [rows] = await connection.query(
-      'INSERT INTO tournaments (title, description, initial_date, final_date, is_premium, image, price, id_circuit, id_city, id_club, id_welcome) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      'INSERT INTO tournaments (title, description, initial_date, final_date, is_premium, image, price, id_circuit, id_club, id_welcome_pack) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
       [
         tournament.title,
         tournament.description,
@@ -28,9 +28,8 @@ export class TournamentModel {
         tournament.image,
         tournament.price,
         tournament.id_circuit,
-        tournament.id_city,
         tournament.id_club,
-        tournament.id_welcome,
+        tournament.id_welcome_pack,
       ],
     );
     return rows;

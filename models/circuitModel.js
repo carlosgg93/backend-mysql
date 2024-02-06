@@ -17,20 +17,18 @@ export class CircuitModel {
   }
 
   static async addCircuit(circuit) {
-    const [rows] = await connection.query('INSERT INTO circuit (name, description, image, id_city) VALUES (?, ?, ?, ?)', [
-      circuit.name,
-      circuit.description,
-      circuit.image,
-      circuit.id_city,
-    ]);
+    const [rows] = await connection.query(
+      'INSERT INTO circuit (name, description, logo, phone, email, web, instagram, facebook) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+      [circuit.name, circuit.description, circuit.logo, circuit.phone, circuit.email, circuit.web, circuit.instagram, circuit.facebook],
+    );
     return rows;
   }
 
   static async updateCircuitById(id, circuit) {
-    const [rows] = await connection.query('UPDATE circuit SET name = ?, description = ?, image = ?, id_city = ? WHERE id = ?', [
+    const [rows] = await connection.query('UPDATE circuit SET name = ?, description = ?, logo = ?, id_city = ? WHERE id = ?', [
       circuit.name,
       circuit.description,
-      circuit.image,
+      circuit.logo,
       circuit.id_city,
       id,
     ]);

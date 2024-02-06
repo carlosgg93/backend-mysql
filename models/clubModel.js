@@ -17,12 +17,25 @@ export class ClubModel {
   }
 
   static async addClub(club) {
-    const [rows] = await connection.query('INSERT INTO club (name, description, image, id_city) VALUES (?, ?, ?, ?)', [
-      club.name,
-      club.description,
-      club.image,
-      club.id_city,
-    ]);
+    const [rows] = await connection.query(
+      'INSERT INTO club (name, email, phone, direction, type, logo, number_of_courts, web, services, schedules, instagram, facebook, is_premium, id_city) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      [
+        club.name,
+        club.email,
+        club.phone,
+        club.direction,
+        club.type,
+        club.logo,
+        club.number_of_courts,
+        club.web,
+        club.services,
+        club.schedules,
+        club.instagram,
+        club.facebook,
+        club.is_premium,
+        club.id_city,
+      ],
+    );
     return rows;
   }
 

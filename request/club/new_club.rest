@@ -1,9 +1,22 @@
-POST http://localhost:3000/api/circuits
+POST http://localhost:3000/api/clubs
 Content-Type: application/json 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNnYXJjaWFnYXJjaWExOTkzQGdtYWlsLmNvbSIsImlkIjoxLCJpYXQiOjE3MDY3MDEzNzl9.wPNJwCoVYkGN8YHpVNnbuI0ql69Wl6ILGZEBaSgrQH0
 
 {
-  "title": "Nuevo club",
+  "name": "Nuevo club",
+  "email": "info@nuevoclu.com",
+  "phone": "934 56 78 90",
+  "direction": "Nuevo club",
+  "type": "outdoor",
+  "logo": "https://laieta.cat/wp-content/uploads/2022/05/logolaieta150.png",
+  "number_of_courts": "16",
+  "web": "https://laieta.cat/",
+  "services": "Bar",
+  "schedules": "9:00-22:00",
+  "instagram": "https://www.instagram.com/clubpadelbarcelona/",
+  "facebook": "https://www.facebook.com/clubpadelbarcelona/",
+  "is_premium": "1",
+  "id_city": "6"
 }
 
 

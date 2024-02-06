@@ -38,7 +38,7 @@ export class PlayerModel {
         player.age,
         player.date_of_birth,
         player.email,
-        player.password,
+        player.passwordHash,
         player.phone,
         player.image,
         player.id_genre,

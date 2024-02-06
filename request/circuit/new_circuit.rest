@@ -3,7 +3,14 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNnYXJjaWFnYXJjaWExOTkzQGdtYWlsLmNvbSIsImlkIjoxLCJpYXQiOjE3MDY3MDEzNzl9.wPNJwCoVYkGN8YHpVNnbuI0ql69Wl6ILGZEBaSgrQH0
 
 {
-  "title": "Nuevo circuito",
+  "name": "Nuevo circuito",
+  "description": "Circuito Padel Barcelona",
+  "logo":"https://www.publidep.com/wp-content/uploads/2022/10/Logos_publidep.svg",
+  "phone":"690 39 45 78",
+  "email":"info@publidep.com",
+  "web":"https://www.publidep.com/",
+  "instagram":"https://www.instagram.com/circuit1/",
+  "facebook":"https://www.facebook.com/circuit1/"
 }
 
 

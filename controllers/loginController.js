@@ -29,6 +29,7 @@ loginRouter.post('/', async (req, res) => {
       token,
       id: manager.id,
       name: manager.name,
+      surname: manager.surname,
       email: manager.email,
     });
   });
